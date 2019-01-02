@@ -9,13 +9,35 @@
 import UIKit
 import Contacts
 class Person: NSObject {
-    fileprivate(set) var faceId: String!
-    fileprivate(set) var avatar: UIImage!
+    var faceId: String!
+    var avatar: UIImage!
 }
 
 class Photo: NSObject {
     var faceIds: [String]!
     var image: UIImage!
+
+    var name: String?
+    var phoneNumber: [String] = [String]()
+    var email: [String] = [String]()
+    
+    
+    
+//    var photoImage: String?
+    var photoData: String?
+    
+    init(contact: CNContact) {
+        name        = contact.givenName + " " + contact.familyName
+        for phone in contact.phoneNumbers {
+            phoneNumber.append(phone.value.stringValue)
+        }
+        for mail in contact.emailAddresses {
+            email.append(mail.value as String)
+        }
+    }
+    override init() {
+        
+    }
 }
 
 class ContentManager: NSObject {
@@ -38,7 +60,9 @@ class ContentManager: NSObject {
         DispatchQueue.global(qos: .background).async {
             
             let (avatarDatas, avatarImages) = self.loadImages(at: "/Images/Avatars")
-            let (photoDatas, photoImages) = self.loadImages(at: "/Images/AllPhotos")
+//            let (photoDatas, photoImages) = self.fetchAddressBookRecords() //self.loadImages(at: "/Images/AllPhotos")
+            
+            let allContacts = self.fetchAddressBookRecords()
             
             // Create Persons
             for (avatarData, avatarImage) in zip(avatarDatas, avatarImages) {
@@ -51,15 +75,26 @@ class ContentManager: NSObject {
             }
             
             // Create Photos
-            for (photoData, photoImage) in zip(photoDatas, photoImages) {
-                let faceIds = AzureFaceRecognition.shared.syncDetectFaceIds(imageData: photoData)
+            for contacts in allContacts {
+                let image = UIImage.init(data: contacts.imageData ?? Data(), scale: UIScreen.main.scale)!
+                
+                let faceIds = AzureFaceRecognition.shared.syncDetectFaceIds(imageData: contacts.imageData ?? Data())
                 if !faceIds.isEmpty {
-                    let photo = Photo()
+                    let photo = Photo(contact: contacts)
                     photo.faceIds = faceIds
-                    photo.image = photoImage
+                    photo.image = image
                     self.photos.append(photo)
                 }
             }
+//            for (photoData, photoImage) in zip(photoDatas, photoImages) {
+//                let faceIds = AzureFaceRecognition.shared.syncDetectFaceIds(imageData: photoData)
+//                if !faceIds.isEmpty {
+//                    let photo = Photo()
+//                    photo.faceIds = faceIds
+//                    photo.image = photoImage
+//                    self.photos.append(photo)
+//                }
+//            }
             
             DispatchQueue.main.async {
                 completion()
@@ -122,10 +157,10 @@ class ContentManager: NSObject {
     }
     
     
-    func fetchAddressBookRecords()-> ([Data], [UIImage]) {
+    func fetchAddressBookRecords()-> [CNContact]{//([Data], [UIImage]) {
         let store = CNContactStore()
         var contacts = [CNContact]()
-        let keys = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),CNContactImageDataKey] as [Any]
+        let keys = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),CNContactImageDataKey,CNContactPhoneNumbersKey,CNContactEmailAddressesKey] as [Any]
         let request = CNContactFetchRequest(keysToFetch: keys as! [CNKeyDescriptor])
         
         do {
@@ -143,6 +178,8 @@ class ContentManager: NSObject {
         var datas: [Data] = []
         var images: [UIImage] = []
         
+        var contactsWithImages = [CNContact]()
+        
        // let fullFolderPath = Bundle.main.resourcePath!.appending(path)
        // let imageNames = try! FileManager.default.contentsOfDirectory(atPath: fullFolderPath)
         
@@ -150,15 +187,16 @@ class ContentManager: NSObject {
             //let imageUrl = fullFolderPath.appending("/\(imageName)")
             let data = contact.imageData
             if(data != nil){
-                let image = UIImage.init(data: data ?? Data(), scale: UIScreen.main.scale)!
-                
-                datas.append(data ?? Data())
-                images.append(image)
+//                let image = UIImage.init(data: data ?? Data(), scale: UIScreen.main.scale)!
+//
+//                datas.append(data ?? Data())
+//                images.append(image)
+                contactsWithImages.append(contact)
             }
             
         }
         
-        return (datas, images)
+        return contactsWithImages//(datas, images)
         // Create Photos
     }
     

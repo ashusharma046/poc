@@ -10,9 +10,16 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    var imagePicker = UIImagePickerController()
     let avatarsSection = 0
     let photosSection = 1
+    var selectedPerson : Person? = nil
     
+    
+    @IBOutlet weak var btnSelectImage: UIButton!
+    @IBAction func btnSelectImageAction(_ sender: UIButton) {
+        openActionSheetForCamera(sender: sender)
+    }
     var persons: [Person] = []
     var photos: [Photo] = []
     
@@ -80,7 +87,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == avatarsSection {
-            return persons.count
+            return 0//persons.count
         }
         
         return photos.count
@@ -95,6 +102,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         cell.type = indexPath.section == avatarsSection ? .round : .square
         
+        
+        let photo = photos[indexPath.item]
+        
+        cell.lblPhone.text = photo.phoneNumber.first
+        cell.lblEmail.text = photo.email.first
+        cell.lblFirstName.text = photo.name
+        
         return cell
     }
     
@@ -104,7 +118,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         // Calculate cell sizes depending on the screen width and the section.
         
-        var itemsPerRow = 3
+        var itemsPerRow = 1
         if indexPath.section == avatarsSection {
             itemsPerRow = persons.count
         }
@@ -113,8 +127,88 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let space = collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right - flowLayout.minimumInteritemSpacing * CGFloat(itemsPerRow - 1)
         let length = floor(space / CGFloat(itemsPerRow))
         
-        return CGSize(width: length, height: length)
+        return CGSize(width: length, height: 120)
     }
     
 }
 
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    
+    func openActionSheetForCamera(sender : Any)  {
+        
+        let actionSheet = UIAlertController(title: "FaceDemo", message: nil, preferredStyle: .actionSheet)
+        let actionTake = UIAlertAction(title: "Take Photo", style: .default) { (action) in
+            self.openImagePickerController(shouldOpenCamera: true)
+        }
+        let uploadLibrary = UIAlertAction(title: "Upload from Library", style: .default) { (action) in
+            self.openImagePickerController(shouldOpenCamera: false)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            
+        }
+        
+        actionSheet.addAction(actionTake)
+        actionSheet.addAction(uploadLibrary)
+        actionSheet.addAction(cancel)
+        
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
+            actionSheet.popoverPresentationController?.sourceView = sender as? UIView
+        }
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func openImagePickerController(shouldOpenCamera : Bool)  {
+        
+        imagePicker.modalPresentationStyle = UIModalPresentationStyle.currentContext
+        imagePicker.delegate = self
+        imagePicker.sourceType = shouldOpenCamera ? .camera : .photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    //MARK: - UIImagePickerController Delegates
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : Any])
+    {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        let resizedImage = self.resizeImage(image: chosenImage, newWidth: 480)
+//        let data = UIImagePNGRepresentation(chosenImage) as NSData?
+        let data = UIImageJPEGRepresentation(resizedImage, 1.0) as NSData?
+        
+        
+        if let faceId = AzureFaceRecognition.shared.syncDetectFaceIds(imageData: data! as Data).first {
+            let person = Person()
+            person.faceId = faceId
+            person.avatar = chosenImage
+            selectedPerson = person
+            
+            
+            AzureFaceRecognition.shared.findSimilars(faceId: person.faceId, faceIds: ContentManager.shared.allPhotosFaceIds) { (faceIds) in
+                self.photos = ContentManager.shared.photos(withFaceIds: faceIds)
+                self.collectionView.reloadSections([self.photosSection])
+                self.collectionView.isUserInteractionEnabled = true
+                
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        
+        
+        
+        btnSelectImage.setImage(resizedImage, for: .normal)
+        dismiss(animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0,width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+}
