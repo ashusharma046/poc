@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0CD0A81C21239250009D0592 /* Azure iOS Facial Recognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Azure iOS Facial Recognition.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CD0A81C21239250009D0592 /* USBPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = USBPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD0A81F21239250009D0592 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CD0A82121239250009D0592 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0CD0A82421239250009D0592 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 		0CD0A81D21239250009D0592 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0CD0A81C21239250009D0592 /* Azure iOS Facial Recognition.app */,
+				0CD0A81C21239250009D0592 /* USBPOC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,9 +79,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0CD0A81B21239250009D0592 /* Azure iOS Facial Recognition */ = {
+		0CD0A81B21239250009D0592 /* USBPOC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0CD0A82E21239252009D0592 /* Build configuration list for PBXNativeTarget "Azure iOS Facial Recognition" */;
+			buildConfigurationList = 0CD0A82E21239252009D0592 /* Build configuration list for PBXNativeTarget "USBPOC" */;
 			buildPhases = (
 				0CD0A81821239250009D0592 /* Sources */,
 				0CD0A81921239250009D0592 /* Frameworks */,
@@ -91,9 +91,9 @@
 			);
 			dependencies = (
 			);
-			name = "Azure iOS Facial Recognition";
+			name = USBPOC;
 			productName = "Azure iOS Facial Recognition";
-			productReference = 0CD0A81C21239250009D0592 /* Azure iOS Facial Recognition.app */;
+			productReference = 0CD0A81C21239250009D0592 /* USBPOC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -111,7 +111,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0CD0A81721239250009D0592 /* Build configuration list for PBXProject "Azure iOS Facial Recognition" */;
+			buildConfigurationList = 0CD0A81721239250009D0592 /* Build configuration list for PBXProject "USBPOC" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -124,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0CD0A81B21239250009D0592 /* Azure iOS Facial Recognition */,
+				0CD0A81B21239250009D0592 /* USBPOC */,
 			);
 		};
 /* End PBXProject section */
@@ -331,7 +331,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0CD0A81721239250009D0592 /* Build configuration list for PBXProject "Azure iOS Facial Recognition" */ = {
+		0CD0A81721239250009D0592 /* Build configuration list for PBXProject "USBPOC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CD0A82C21239252009D0592 /* Debug */,
@@ -340,7 +340,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0CD0A82E21239252009D0592 /* Build configuration list for PBXNativeTarget "Azure iOS Facial Recognition" */ = {
+		0CD0A82E21239252009D0592 /* Build configuration list for PBXNativeTarget "USBPOC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CD0A82F21239252009D0592 /* Debug */,

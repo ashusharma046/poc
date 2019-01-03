@@ -17,6 +17,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     @IBOutlet weak var btnSelectImage: UIButton!
+    @IBOutlet weak var labelRecognized: UILabel!
     @IBAction func btnSelectImageAction(_ sender: UIButton) {
         openActionSheetForCamera(sender: sender)
     }
@@ -28,12 +29,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.activityIndicator.stopAnimating()
+        labelRecognized.isHidden = true
         ContentManager.shared.load {
             self.persons = ContentManager.shared.persons
             self.photos = ContentManager.shared.photos
             self.collectionView.reloadData()
-            
+            self.collectionView.isHidden = true
             self.activityIndicator.stopAnimating()
         }
     }
@@ -191,6 +193,8 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                 self.collectionView.isUserInteractionEnabled = true
                 
                 self.activityIndicator.stopAnimating()
+                self.collectionView.isHidden = false
+                self.labelRecognized.isHidden = false
             }
         }
         
