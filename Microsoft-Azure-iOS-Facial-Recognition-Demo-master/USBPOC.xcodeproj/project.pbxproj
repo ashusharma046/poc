@@ -16,6 +16,8 @@
 		0CD0A86D212393D6009D0592 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 0CD0A86C212393D6009D0592 /* Images */; };
 		0CD0A86F2123976C009D0592 /* AzureFaceRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0A86E2123976C009D0592 /* AzureFaceRecognition.swift */; };
 		0CD0A871212480D6009D0592 /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD0A870212480D6009D0592 /* ContentManager.swift */; };
+		1E7F954721E5DA1D0021EF85 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7F954621E5DA1D0021EF85 /* HomeViewController.swift */; };
+		1E7F954921E5DC340021EF85 /* AddRecipientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7F954821E5DC340021EF85 /* AddRecipientViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		0CD0A86C212393D6009D0592 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = SOURCE_ROOT; };
 		0CD0A86E2123976C009D0592 /* AzureFaceRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureFaceRecognition.swift; sourceTree = "<group>"; };
 		0CD0A870212480D6009D0592 /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
+		1E7F954621E5DA1D0021EF85 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1E7F954821E5DC340021EF85 /* AddRecipientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipientViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,8 @@
 			children = (
 				0CD0A81F21239250009D0592 /* AppDelegate.swift */,
 				0CD0A82121239250009D0592 /* ViewController.swift */,
+				1E7F954621E5DA1D0021EF85 /* HomeViewController.swift */,
+				1E7F954821E5DC340021EF85 /* AddRecipientViewController.swift */,
 				0CD0A83121239320009D0592 /* ImageCellView.swift */,
 				0CD0A86E2123976C009D0592 /* AzureFaceRecognition.swift */,
 				0CD0A870212480D6009D0592 /* ContentManager.swift */,
@@ -149,10 +155,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CD0A86F2123976C009D0592 /* AzureFaceRecognition.swift in Sources */,
+				1E7F954921E5DC340021EF85 /* AddRecipientViewController.swift in Sources */,
 				0CD0A871212480D6009D0592 /* ContentManager.swift in Sources */,
 				0CD0A83221239320009D0592 /* ImageCellView.swift in Sources */,
 				0CD0A82221239250009D0592 /* ViewController.swift in Sources */,
 				0CD0A82021239250009D0592 /* AppDelegate.swift in Sources */,
+				1E7F954721E5DA1D0021EF85 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
