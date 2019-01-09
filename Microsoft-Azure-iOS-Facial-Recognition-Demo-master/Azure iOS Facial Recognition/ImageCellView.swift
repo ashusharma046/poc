@@ -49,5 +49,11 @@ class ImageCellView: UICollectionViewCell {
             imageView.layer.borderColor = isSelected ? selectedColor : unselectedColor
         }
     }
+    
+    //func useManyImages() {
+   
+    
+    
+   
 }
 
