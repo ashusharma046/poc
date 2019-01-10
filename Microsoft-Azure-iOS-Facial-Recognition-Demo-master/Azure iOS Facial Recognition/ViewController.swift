@@ -66,7 +66,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Clear photos section
         self.photos = []
         collectionView.reloadSections([photosSection])
-        
         // Disable interactions while finding similar images
         collectionView.isUserInteractionEnabled = false
         
@@ -75,7 +74,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.photos = ContentManager.shared.photos(withFaceIds: faceIds)
             self.collectionView.reloadSections([self.photosSection])
             self.collectionView.isUserInteractionEnabled = true
-            
             self.activityIndicator.stopAnimating()
         }
     }
@@ -89,28 +87,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == avatarsSection {
-            return 0//persons.count
+            return 0
         }
         
         return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ImageCellView
         
         let image = indexPath.section == avatarsSection ? persons[indexPath.item].avatar : photos[indexPath.item].image
         cell.imageView.image = image
-        
         cell.type = indexPath.section == avatarsSection ? .round : .square
-        
-        
         let photo = photos[indexPath.item]
-        
         cell.lblPhone.text = photo.phoneNumber.first
         cell.lblEmail.text = photo.email.first
         cell.lblFirstName.text = photo.name
-        
         return cell
     }
     
@@ -138,7 +130,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     
     
     func openActionSheetForCamera(sender : Any)  {
-        
         let actionSheet = UIAlertController(title: "FaceDemo", message: nil, preferredStyle: .actionSheet)
         let actionTake = UIAlertAction(title: "Take Photo", style: .default) { (action) in
             self.openImagePickerController(shouldOpenCamera: true)
@@ -149,7 +140,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             
         }
-        
         actionSheet.addAction(actionTake)
         actionSheet.addAction(uploadLibrary)
         actionSheet.addAction(cancel)
@@ -160,53 +150,49 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         self.present(actionSheet, animated: true, completion: nil)
     }
     
+    
+    
     func openImagePickerController(shouldOpenCamera : Bool)  {
-        
         imagePicker.modalPresentationStyle = UIModalPresentationStyle.currentContext
         imagePicker.delegate = self
         imagePicker.sourceType = shouldOpenCamera ? .camera : .photoLibrary
         self.present(imagePicker, animated: true, completion: nil)
-        
     }
+    
     
     //MARK: - UIImagePickerController Delegates
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any])
     {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        
         let resizedImage = self.resizeImage(image: chosenImage, newWidth: 480)
-//        let data = UIImagePNGRepresentation(chosenImage) as NSData?
         let data = UIImageJPEGRepresentation(resizedImage, 1.0) as NSData?
-        
         
         if let faceId = AzureFaceRecognition.shared.syncDetectFaceIds(imageData: data! as Data).first {
             let person = Person()
             person.faceId = faceId
             person.avatar = chosenImage
             selectedPerson = person
-            
-            
             AzureFaceRecognition.shared.findSimilars(faceId: person.faceId, faceIds: ContentManager.shared.allPhotosFaceIds) { (faceIds) in
                 self.photos = ContentManager.shared.photos(withFaceIds: faceIds)
                 self.collectionView.reloadSections([self.photosSection])
                 self.collectionView.isUserInteractionEnabled = true
-                
                 self.activityIndicator.stopAnimating()
                 self.collectionView.isHidden = false
                 self.labelRecognized.isHidden = false
             }
         }
-        
-        
-        
         btnSelectImage.setImage(resizedImage, for: .normal)
         dismiss(animated: true, completion: nil)
+        
     }
+    
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
@@ -215,4 +201,11 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         UIGraphicsEndImageContext()
         return newImage!
     }
+    
+    
+    @IBAction func payNowButtonTapped() {
+        print("do this - payNowButtonTapped)")
+    }
+    
+    
 }
