@@ -42,8 +42,10 @@ class AddRecipientViewController: UIViewController,UIImagePickerControllerDelega
         let contact = CNMutableContact()
        // contact.familyName = "Family Name"
         contact.givenName = nameField.text ?? ""
+        if (btnSelectImage.imageView?.image != nil){
         let imageData: NSData = UIImagePNGRepresentation(btnSelectImage.imageView?.image ?? UIImage())! as NSData
         contact.imageData = imageData as Data
+        }
         let homeEmail = CNLabeledValue(label: CNLabelHome,
                                        value: emailField.text as NSString? ?? "")
         let workEmail = CNLabeledValue(label: CNLabelHome,
