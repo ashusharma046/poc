@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hz9-g6-9kL">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,29 +15,29 @@
             <objects>
                 <viewController id="lQd-pa-MfY" customClass="ViewController" customModule="USBPOC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vZY-L6-r4V">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJm-x4-x8I">
-                                <rect key="frame" x="148" y="76" width="79" height="100"/>
+                                <rect key="frame" x="324" y="82" width="120" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="VZv-Zr-56i"/>
-                                    <constraint firstAttribute="width" constant="79" id="uLB-j4-6KD"/>
+                                    <constraint firstAttribute="height" constant="120" id="VZv-Zr-56i"/>
+                                    <constraint firstAttribute="width" constant="120" id="uLB-j4-6KD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
                                 <state key="normal" title="Select Image">
-                                    <color key="titleColor" red="0.2078987954" green="0.12314352069999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
                                     <action selector="btnSelectImageAction:" destination="lQd-pa-MfY" eventType="touchUpInside" id="7Rz-O8-DYd"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feb-kE-JUm">
-                                <rect key="frame" x="0.0" y="186" width="375" height="31"/>
+                                <rect key="frame" x="0.0" y="212" width="768" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recognized Faces" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fg6-9B-EBP">
-                                        <rect key="frame" x="23" y="8" width="139" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="23" y="8" width="132.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -50,7 +50,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Pz-rn-Ed3">
-                                <rect key="frame" x="0.0" y="225" width="375" height="442"/>
+                                <rect key="frame" x="0.0" y="251" width="768" height="773"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BEh-I4-AKg">
                                     <size key="itemSize" width="329" height="100"/>
@@ -60,7 +60,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" reuseIdentifier="Cell" id="5uK-tu-Kpc" customClass="ImageCellView" customModule="USBPOC" customModuleProvider="target">
-                                        <rect key="frame" x="23" y="20" width="329" height="100"/>
+                                        <rect key="frame" x="20" y="20" width="329" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="329" height="100"/>
@@ -77,7 +77,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="qNv-tw-aos"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -86,7 +86,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="16" id="HfR-mI-pDc"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -95,7 +95,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="TIn-sH-CQG"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -106,7 +106,7 @@
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="77" id="Bw4-8r-ov7"/>
                                                         <constraint firstAttribute="height" constant="30" id="HsC-hz-VHK"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                                     <state key="normal" title="Pay Now"/>
                                                     <connections>
                                                         <action selector="payNowButtonTapped" destination="lQd-pa-MfY" eventType="touchUpInside" id="E0E-V8-KTQ"/>
@@ -145,7 +145,7 @@
                                 </connections>
                             </collectionView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Jjc-7E-Wgu">
-                                <rect key="frame" x="177.5" y="355.5" width="20" height="20"/>
+                                <rect key="frame" x="374" y="537" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -181,34 +181,52 @@
             <objects>
                 <viewController id="rvH-cU-4Ze" customClass="HomeViewController" customModule="USBPOC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uqi-yO-Dcu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7j-4Y-gdt">
-                                <rect key="frame" x="91" y="176" width="193" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Pay to recipient using image"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7j-4Y-gdt">
+                                <rect key="frame" x="259.5" y="175" width="249" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="215" id="L43-B2-PAe"/>
+                                    <constraint firstAttribute="height" constant="33" id="QIh-vQ-i4y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
+                                <state key="normal" title="Pay to recipient using image">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="lQd-pa-MfY" kind="push" id="goo-3y-26F"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2i-Cb-YXZ">
-                                <rect key="frame" x="89" y="272" width="196" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Recipient"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2i-Cb-YXZ">
+                                <rect key="frame" x="321" y="272" width="126" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KCb-o9-Jmb"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="107" id="fkg-m9-a7f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
+                                <state key="normal" title="Add Recipient">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="DN3-1q-OEk" kind="push" id="Hea-IZ-tZy"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="m7j-4Y-gdt" firstAttribute="centerX" secondItem="Uqi-yO-Dcu" secondAttribute="centerX" id="1uU-AT-S26"/>
+                            <constraint firstItem="M2i-Cb-YXZ" firstAttribute="top" secondItem="m7j-4Y-gdt" secondAttribute="bottom" constant="64" id="3VQ-kk-rdL"/>
+                            <constraint firstItem="m7j-4Y-gdt" firstAttribute="top" secondItem="fqX-NB-C1l" secondAttribute="top" constant="105" id="Fg7-kZ-m2M"/>
+                            <constraint firstItem="M2i-Cb-YXZ" firstAttribute="centerX" secondItem="Uqi-yO-Dcu" secondAttribute="centerX" id="XxA-Qh-tmP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fqX-NB-C1l"/>
                     </view>
                     <navigationItem key="navigationItem" id="CDE-uw-j0Q"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fmm-mq-KD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1266" y="-518"/>
+            <point key="canvasLocation" x="602" y="-519"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2yW-td-cuv">
@@ -216,7 +234,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hz9-g6-9kL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Kyv-Q1-oJU">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -226,60 +244,64 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wSt-Py-W0W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="532" y="-517"/>
+            <point key="canvasLocation" x="-183" y="-528"/>
         </scene>
         <!--Add Recipient View Controller-->
         <scene sceneID="11O-as-IfO">
             <objects>
                 <viewController id="DN3-1q-OEk" customClass="AddRecipientViewController" customModule="USBPOC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7o7-SV-2lC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDc-9x-SJi">
-                                <rect key="frame" x="16" y="240" width="45" height="21"/>
+                                <rect key="frame" x="16" y="246" width="53" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="VCB-8X-d21"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4bS-JY-OjR">
-                                <rect key="frame" x="160" y="240" width="185" height="30"/>
+                                <rect key="frame" x="553" y="246" width="185" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="185" id="9Su-T9-tWm"/>
                                     <constraint firstAttribute="height" constant="30" id="y2E-T3-u5o"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zvb-Uh-XGh">
-                                <rect key="frame" x="16" y="306" width="88" height="21"/>
+                                <rect key="frame" x="16" y="312" width="99.5" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Fgi-dr-asH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfp-fF-X3j">
-                                <rect key="frame" x="163" y="382" width="49" height="30"/>
+                                <rect key="frame" x="356.5" y="432" width="55" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="g5a-1P-1Df"/>
                                 </constraints>
-                                <state key="normal" title="Submit"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="submitButtonTapped" destination="DN3-1q-OEk" eventType="touchUpInside" id="ObW-WE-NMm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5e-PJ-5gc">
-                                <rect key="frame" x="255" y="74" width="120" height="120"/>
+                                <rect key="frame" x="598" y="80" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="7pu-c9-nlz"/>
                                     <constraint firstAttribute="width" constant="120" id="PxV-Hi-0dc"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
                                 <state key="normal" title="Select Image">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -288,14 +310,35 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jtb-A7-UyK">
-                                <rect key="frame" x="160" y="306" width="185" height="30"/>
+                                <rect key="frame" x="553" y="312" width="185" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="S6T-og-50w"/>
                                     <constraint firstAttribute="width" constant="185" id="a3y-hv-8hs"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Email Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOr-TI-XXD">
+                                <rect key="frame" x="16" y="380" width="100" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="pxJ-nZ-Zbi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ua-yb-ue6">
+                                <rect key="frame" x="553" y="380" width="185" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="QSl-k6-HNB"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="185" id="bt8-8e-PLa"/>
+                                    <constraint firstAttribute="height" constant="30" id="ezh-6G-03j"/>
+                                    <constraint firstAttribute="width" constant="185" id="vop-uz-Rh2"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -307,11 +350,15 @@
                             <constraint firstItem="Fuy-F1-Xnt" firstAttribute="trailing" secondItem="4bS-JY-OjR" secondAttribute="trailing" constant="30" id="AbF-Co-fmk"/>
                             <constraint firstItem="Fuy-F1-Xnt" firstAttribute="trailing" secondItem="Jtb-A7-UyK" secondAttribute="trailing" constant="30" id="DiJ-R4-HAy"/>
                             <constraint firstItem="lfp-fF-X3j" firstAttribute="centerX" secondItem="7o7-SV-2lC" secondAttribute="centerX" id="H1J-Xh-TCK"/>
-                            <constraint firstItem="lfp-fF-X3j" firstAttribute="top" secondItem="Jtb-A7-UyK" secondAttribute="bottom" constant="46" id="HQ1-pj-N5A"/>
+                            <constraint firstItem="lfp-fF-X3j" firstAttribute="top" secondItem="Jtb-A7-UyK" secondAttribute="bottom" constant="90" id="HQ1-pj-N5A"/>
+                            <constraint firstItem="7ua-yb-ue6" firstAttribute="top" secondItem="FOr-TI-XXD" secondAttribute="top" id="Imc-SR-OFy"/>
                             <constraint firstItem="Jtb-A7-UyK" firstAttribute="top" secondItem="zvb-Uh-XGh" secondAttribute="top" id="SAD-T3-Od2"/>
+                            <constraint firstItem="7ua-yb-ue6" firstAttribute="leading" secondItem="Jtb-A7-UyK" secondAttribute="leading" id="V0B-zO-9hM"/>
+                            <constraint firstItem="7ua-yb-ue6" firstAttribute="top" secondItem="Jtb-A7-UyK" secondAttribute="bottom" constant="38" id="VcT-I7-TwE"/>
                             <constraint firstItem="Jtb-A7-UyK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zvb-Uh-XGh" secondAttribute="trailing" constant="8" symbolic="YES" id="Wrg-Fp-Sna"/>
                             <constraint firstItem="Jtb-A7-UyK" firstAttribute="top" secondItem="4bS-JY-OjR" secondAttribute="bottom" constant="36" id="ivx-82-zab"/>
-                            <constraint firstItem="Fuy-F1-Xnt" firstAttribute="trailing" secondItem="q5e-PJ-5gc" secondAttribute="trailing" id="jAc-hV-l1J"/>
+                            <constraint firstItem="Fuy-F1-Xnt" firstAttribute="trailing" secondItem="q5e-PJ-5gc" secondAttribute="trailing" constant="50" id="jAc-hV-l1J"/>
+                            <constraint firstItem="FOr-TI-XXD" firstAttribute="leading" secondItem="Fuy-F1-Xnt" secondAttribute="leading" constant="16" id="reX-XW-iPV"/>
                             <constraint firstItem="4bS-JY-OjR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gDc-9x-SJi" secondAttribute="trailing" constant="8" symbolic="YES" id="tkH-Wh-ssh"/>
                             <constraint firstItem="q5e-PJ-5gc" firstAttribute="top" secondItem="Fuy-F1-Xnt" secondAttribute="top" constant="10" id="v13-HO-7Fe"/>
                         </constraints>
@@ -320,8 +367,9 @@
                     <navigationItem key="navigationItem" id="ySi-g2-f7E"/>
                     <connections>
                         <outlet property="btnSelectImage" destination="q5e-PJ-5gc" id="Emf-fc-0Ju"/>
-                        <outlet property="emailField" destination="Jtb-A7-UyK" id="GIT-gT-5fX"/>
-                        <outlet property="nameField" destination="4bS-JY-OjR" id="YmW-Vy-oTO"/>
+                        <outlet property="contactField" destination="Jtb-A7-UyK" id="r0d-tZ-Hav"/>
+                        <outlet property="emailField" destination="7ua-yb-ue6" id="SCp-VT-jcf"/>
+                        <outlet property="nameField" destination="4bS-JY-OjR" id="RuP-bM-xum"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXB-Co-vWf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -333,7 +381,7 @@
             <objects>
                 <viewController id="W2Z-9H-6xr" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hxq-cL-f13">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ux4-WQ-BHL"/>
@@ -347,20 +395,20 @@
             <objects>
                 <viewController id="Xp3-XB-hiJ" customClass="PayNowViewController" customModule="USBPOC" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h4z-vW-XXj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter amount to be paid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ou2-8Z-hb7">
-                                <rect key="frame" x="0.0" y="84" width="375" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter amount to be paid(in USD)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ou2-8Z-hb7">
+                                <rect key="frame" x="0.0" y="90" width="768" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="BXt-cP-XHK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pm6-ms-Fhb">
-                                <rect key="frame" x="116.5" y="140" width="142" height="30"/>
+                                <rect key="frame" x="313" y="146" width="142" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="142" id="Ijb-uK-GsW"/>
                                     <constraint firstAttribute="height" constant="30" id="PZJ-8o-55W"/>
@@ -370,12 +418,15 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fL9-LW-KzD">
-                                <rect key="frame" x="133.5" y="222" width="108" height="30"/>
+                                <rect key="frame" x="330" y="228" width="108" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="28J-iK-VTk"/>
                                     <constraint firstAttribute="width" constant="108" id="zrS-wB-Lty"/>
                                 </constraints>
-                                <state key="normal" title="Submit"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="submitButtonTapped" destination="Xp3-XB-hiJ" eventType="touchUpInside" id="fS1-j5-klU"/>
                                 </connections>

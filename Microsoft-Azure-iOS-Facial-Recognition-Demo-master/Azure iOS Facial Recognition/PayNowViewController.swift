@@ -1,10 +1,4 @@
-//
-//  PayNowViewController.swift
-//  USBPOC
-//
-//  Created by Ashu Sharma 3 on 1/10/19.
-//  Copyright © 2019 Alejandro Cotilla. All rights reserved.
-//
+
 
 import UIKit
 
@@ -14,7 +8,7 @@ class PayNowViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+       
     }
     
 
@@ -27,14 +21,14 @@ class PayNowViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
      @IBAction func submitButtonTapped() {
-        
         let alert = UIAlertController(title: "Alert", message: "Amount paid successfully", preferredStyle: UIAlertControllerStyle.alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
             UIAlertAction in
            self.navigationController?.popToRootViewController(animated: true)
         }
-        
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
      }

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Azure iOS Facial Recognition/ContentManager.swift"
-            timestampString = "568707727.183472"
+            timestampString = "569154383.703856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "photos(withFaceIds:)"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "fetchAddressBookRecords()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Azure iOS Facial Recognition/ViewController.swift"
-            timestampString = "568791400.150924"
+            timestampString = "569154383.7039191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "openActionSheetForCamera(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Azure iOS Facial Recognition/AddRecipientViewController.swift"
-            timestampString = "568791400.15099"
+            timestampString = "569221755.2122509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "submitButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,155 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Azure iOS Facial Recognition/AddRecipientViewController.swift"
-            timestampString = "568791400.1513799"
+            timestampString = "569221755.212692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "AddRecipientViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Azure iOS Facial Recognition/ViewController.swift"
+            timestampString = "569154383.7049741"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Azure iOS Facial Recognition/ViewController.swift"
+            timestampString = "569154383.705021"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Azure iOS Facial Recognition/ViewController.swift"
+            timestampString = "569154383.705058"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Azure iOS Facial Recognition/ViewController.swift"
+            timestampString = "569154383.705094"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Azure iOS Facial Recognition/ViewController.swift"
+            timestampString = "569154383.705129"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Azure iOS Facial Recognition/ViewController.swift"
+            timestampString = "569154383.705199"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "USBPOC.ViewController.imagePickerController(_: __C.UIImagePickerController, didFinishPickingMediaWithInfo: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "USBPOC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashsharm8/poc/Microsoft-Azure-iOS-Facial-Recognition-Demo-master/Azure%20iOS%20Facial%20Recognition/ViewController.swift"
+                  timestampString = "569142678.187098"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "1462">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;Swift.String&gt;) -&gt; () in USBPOC.ViewController.imagePickerController(_: __C.UIImagePickerController, didFinishPickingMediaWithInfo: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "USBPOC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ashsharm8/poc/Microsoft-Azure-iOS-Facial-Recognition-Demo-master/Azure%20iOS%20Facial%20Recognition/ViewController.swift"
+                  timestampString = "569142678.188712"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "174"
+                  endingLineNumber = "174"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Azure iOS Facial Recognition/ViewController.swift"
+            timestampString = "569154383.705253"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>

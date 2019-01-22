@@ -1,18 +1,15 @@
-//
-//  AddRecipientViewController.swift
-//  USBPOC
-//
-//  Created by Ashu Sharma 3 on 1/9/19.
-//  Copyright © 2019 Alejandro Cotilla. All rights reserved.
-//
+
 
 import UIKit
 import Contacts
 class AddRecipientViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var contactField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var btnSelectImage: UIButton!
+    
+    
     @IBAction func btnSelectImageAction(_ sender: UIButton) {
         openActionSheetForCamera(sender: sender)
     }
@@ -20,29 +17,53 @@ class AddRecipientViewController: UIViewController,UIImagePickerControllerDelega
     var imagePicker = UIImagePickerController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        imagePicker.delegate = self 
-        // Do any additional setup after loading the view.
+        imagePicker.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate 
+        textField.resignFirstResponder()
+        return true
     }
-    */
-
     
-    
+  
     @IBAction func submitButtonTapped() {
+        if (!(nameField.text?.isName() ?? false)) {
+            let alert = UIAlertController(title: "US Bank", message: "Please enter a valid name.", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+              self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if (!(contactField.text?.isConatctNumber() ?? false)){
+            let alert = UIAlertController(title: "US Bank", message: "Conatct number should consist atleast 5 digits.", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if (!(emailField.text?.isEmail() ?? false)) {
+            let alert = UIAlertController(title: "US Bank", message: "Please enter a valid email.", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         let store = CNContactStore()
         let contact = CNMutableContact()
-       // contact.familyName = "Family Name"
         contact.givenName = nameField.text ?? ""
-        if (btnSelectImage.imageView?.image != nil){
+        if (btnSelectImage.imageView?.image != nil) {
         let imageData: NSData = UIImagePNGRepresentation(btnSelectImage.imageView?.image ?? UIImage())! as NSData
         contact.imageData = imageData as Data
         }
@@ -50,6 +71,8 @@ class AddRecipientViewController: UIViewController,UIImagePickerControllerDelega
                                        value: emailField.text as NSString? ?? "")
         let workEmail = CNLabeledValue(label: CNLabelHome,
                                        value: emailField.text as NSString? ?? "")
+        let phone = CNLabeledValue(label: CNLabelWork, value:CNPhoneNumber(stringValue: contactField.text  ?? ""))
+        contact.phoneNumbers = [phone]
         contact.emailAddresses = [homeEmail, workEmail]
         let address = CNMutablePostalAddress()
         address.street = "Sapient sec 144"
@@ -58,24 +81,28 @@ class AddRecipientViewController: UIViewController,UIImagePickerControllerDelega
         address.postalCode = "12345"
         address.country = "india"
         let home = CNLabeledValue<CNPostalAddress>(label:CNLabelHome, value:address)
-        contact.postalAddresses = [home]
-        
-        
-        // Save
+        //contact.postalAddresses = [home]
         let saveRequest = CNSaveRequest()
         saveRequest.add(contact, toContainerWithIdentifier: nil)
-        try? store.execute(saveRequest)
-        self.navigationController?.popViewController(animated: true)
-        
-        
+        do
+        {
+            try? store.execute(saveRequest)
+            let alert = UIAlertController(title: "US Bank", message: "Record saved successfully", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                UIAlertAction in
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        catch let error{
+            print(error)
+        }
         
     }
     
-    
-    
-    
     func openActionSheetForCamera(sender : Any)  {
-        
         let actionSheet = UIAlertController(title: "FaceDemo", message: nil, preferredStyle: .actionSheet)
         let actionTake = UIAlertAction(title: "Take Photo", style: .default) { (action) in
             self.openImagePickerController(shouldOpenCamera: true)
@@ -84,13 +111,10 @@ class AddRecipientViewController: UIViewController,UIImagePickerControllerDelega
             self.openImagePickerController(shouldOpenCamera: false)
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            
         }
-        
         actionSheet.addAction(actionTake)
         actionSheet.addAction(uploadLibrary)
         actionSheet.addAction(cancel)
-        
         if (UIDevice.current.userInterfaceIdiom == .pad) {
             actionSheet.popoverPresentationController?.sourceView = sender as? UIView
         }
@@ -99,7 +123,6 @@ class AddRecipientViewController: UIViewController,UIImagePickerControllerDelega
     
     
     func openImagePickerController(shouldOpenCamera : Bool)  {
-        
         imagePicker.modalPresentationStyle = UIModalPresentationStyle.currentContext
         imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
         imagePicker.sourceType = shouldOpenCamera ? .camera : .photoLibrary
@@ -107,18 +130,13 @@ class AddRecipientViewController: UIViewController,UIImagePickerControllerDelega
         
     }
     
-    
-    
     //MARK: - UIImagePickerController Delegates
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any])
     {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        
         let resizedImage = self.resizeImage(image: chosenImage, newWidth: 480)
-        //        let data = UIImagePNGRepresentation(chosenImage) as NSData?
-        let data = UIImageJPEGRepresentation(resizedImage, 1.0) as NSData?
-       
+        _ = UIImageJPEGRepresentation(resizedImage, 1.0) as NSData?
         btnSelectImage.setImage(resizedImage, for: .normal)
         dismiss(animated: true, completion: nil)
     }
@@ -126,6 +144,7 @@ class AddRecipientViewController: UIViewController,UIImagePickerControllerDelega
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
     
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
         let scale = newWidth / image.size.width

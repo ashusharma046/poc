@@ -1,10 +1,4 @@
-//
-//  ViewController.swift
-//  Azure iOS Facial Recognition
-//
-//  Created by Alejandro Cotilla on 8/14/18.
-//  Copyright © 2018 Alejandro Cotilla. All rights reserved.
-//
+
 
 import UIKit
 
@@ -43,18 +37,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // Re-adjust collection view layout on device rotation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        
         guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
             return
         }
-        
         flowLayout.invalidateLayout()
     }
     
     // MARK: UICollectionViewDelegate
-    
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        // Avoid selection on the standard photos section
         return indexPath.section == avatarsSection
     }
     
@@ -62,15 +52,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         activityIndicator.startAnimating()
         
         let person = persons[indexPath.item]
-
-        // Clear photos section
         self.photos = []
         collectionView.reloadSections([photosSection])
-        // Disable interactions while finding similar images
         collectionView.isUserInteractionEnabled = false
-        
-        // Find photos that match the selected avatar
         AzureFaceRecognition.shared.findSimilars(faceId: person.faceId, faceIds: ContentManager.shared.allPhotosFaceIds) { (faceIds) in
+            
+            if ( faceIds.count == 0 ){
+                let alert = UIAlertController(title: "US Bank", message: "No Record Found.", preferredStyle: UIAlertControllerStyle.alert)
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                    UIAlertAction in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            }
             self.photos = ContentManager.shared.photos(withFaceIds: faceIds)
             self.collectionView.reloadSections([self.photosSection])
             self.collectionView.isUserInteractionEnabled = true
@@ -78,10 +73,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    // MARK: UICollectionViewDataSource
+   
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // Two sections, avatars and standard photos.
         return 2
     }
     
@@ -89,7 +83,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if section == avatarsSection {
             return 0
         }
-        
         return photos.count
     }
     
@@ -105,29 +98,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.lblFirstName.text = photo.name
         return cell
     }
-    
-    // MARK: UICollectionViewDelegateFlowLayout
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        // Calculate cell sizes depending on the screen width and the section.
-        
         var itemsPerRow = 1
         if indexPath.section == avatarsSection {
             itemsPerRow = persons.count
         }
-        
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         let space = collectionView.frame.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right - flowLayout.minimumInteritemSpacing * CGFloat(itemsPerRow - 1)
         let length = floor(space / CGFloat(itemsPerRow))
-        
         return CGSize(width: length, height: 120)
+        
     }
     
 }
 
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func openActionSheetForCamera(sender : Any)  {
         let actionSheet = UIAlertController(title: "FaceDemo", message: nil, preferredStyle: .actionSheet)
@@ -138,12 +125,10 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             self.openImagePickerController(shouldOpenCamera: false)
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            
         }
         actionSheet.addAction(actionTake)
         actionSheet.addAction(uploadLibrary)
         actionSheet.addAction(cancel)
-        
         if (UIDevice.current.userInterfaceIdiom == .pad) {
             actionSheet.popoverPresentationController?.sourceView = sender as? UIView
         }
@@ -174,6 +159,15 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             person.avatar = chosenImage
             selectedPerson = person
             AzureFaceRecognition.shared.findSimilars(faceId: person.faceId, faceIds: ContentManager.shared.allPhotosFaceIds) { (faceIds) in
+                if ( faceIds.count == 0 ){
+                    let alert = UIAlertController(title: "US Bank", message: "No Record Found.", preferredStyle: UIAlertControllerStyle.alert)
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                        UIAlertAction in
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
                 self.photos = ContentManager.shared.photos(withFaceIds: faceIds)
                 self.collectionView.reloadSections([self.photosSection])
                 self.collectionView.isUserInteractionEnabled = true
@@ -204,7 +198,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     
     
     @IBAction func payNowButtonTapped() {
-        print("do this - payNowButtonTapped)")
     }
     
     

@@ -1,10 +1,4 @@
-//
-//  ImageCellView.swift
-//  Azure iOS Facial Recognition
-//
-//  Created by Alejandro Cotilla on 8/14/18.
-//  Copyright © 2018 Alejandro Cotilla. All rights reserved.
-//
+
 
 import UIKit
 
@@ -39,7 +33,6 @@ class ImageCellView: UICollectionViewCell {
             guard imageView != nil else {
                 return
             }
-            
             imageView.layer.cornerRadius = type == .round ? frame.width / 2.0 : 0.0
         }
     }
@@ -49,11 +42,7 @@ class ImageCellView: UICollectionViewCell {
             imageView.layer.borderColor = isSelected ? selectedColor : unselectedColor
         }
     }
-    
-    //func useManyImages() {
    
-    
-    
    
 }
 

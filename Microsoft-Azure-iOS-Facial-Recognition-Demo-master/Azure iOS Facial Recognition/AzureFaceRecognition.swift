@@ -1,10 +1,4 @@
-//
-//  AzureFaceRecognition.swift
-//  Azure iOS Facial Recognition
-//
-//  Created by Alejandro Cotilla on 8/14/18.
-//  Copyright © 2018 Alejandro Cotilla. All rights reserved.
-//
+
 
 import UIKit
 
@@ -34,26 +28,20 @@ class AzureFaceRecognition: NSObject {
     // See Face - Find Similar endpoint details
     // https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237
     func findSimilars(faceId: String, faceIds: [String], completion: @escaping ([String]) -> Void) {
-        
         var headers: [String: String] = [:]
         headers["Content-Type"] = "application/json"
         headers["Ocp-Apim-Subscription-Key"] = APIKey
-        
         let params: [String: Any] = [
             "faceId": faceId,
             "faceIds": faceIds,
             "mode": "matchFace"
         ]
-        
         // Convert the Dictionary to Data
         let data = try! JSONSerialization.data(withJSONObject: params)
-        
         DispatchQueue.global(qos: .background).async {
             let response = self.makePOSTRequest(url: FindSimilarsUrl, postData: data, headers: headers)
-            
             // Use a low confidence value to get more matches
             let faceIds = self.extractFaceIds(fromResponse: response, minConfidence: 0.4)
-
             DispatchQueue.main.async {
               completion(faceIds)
             }
@@ -71,9 +59,7 @@ class AzureFaceRecognition: NSObject {
                 }
                 if canAddFace { faceIds.append(faceId) }
             }
-            
         }
-        
         return faceIds
     }
     
@@ -91,7 +77,6 @@ class AzureFaceRecognition: NSObject {
         
         // Using semaphore to make request synchronous
         let semaphore = DispatchSemaphore(value: 0)
-        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [AnyObject], json != nil {
                 object = json!
@@ -99,13 +84,11 @@ class AzureFaceRecognition: NSObject {
             else {
                 print("ERROR response: \(String(data: data!, encoding: .utf8) ?? "")")
             }
-            
             semaphore.signal()
         }
         
         task.resume()
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
-        
         return object
     }
 }
